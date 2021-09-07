@@ -30,7 +30,8 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
     overrides,
   } = props
   const translations = getTranslations(parentTranslations)
-  const { trigger, watch } = useFormContext()
+  const formContext = useFormContext()
+  const { trigger, watch } = formContext
   const cardNumber = watch('cardNumber')
   const { card } = cardValidator.number(cardNumber)
   const isAmex = card?.type === 'american-express'
@@ -141,6 +142,11 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
             endEnhancer={<CardIcon cardNumber={cardNumber} />}
             onFocus={() => setFocusedField(CardFields.CardNumber)}
             onValid={goNext}
+            onChange={(value) => {
+              if (props.onChange) {
+                props.onChange('cardName', value, formContext)
+              }
+            }}
           />
           <FormTextField
             style={textFieldStyle}
@@ -162,6 +168,11 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
             autoCorrect={false}
             onSubmitEditing={goNext}
             onFocus={() => setFocusedField(CardFields.CardHolderName)}
+            onChange={(value) => {
+              if (props.onChange) {
+                props.onChange('holderName', value, formContext)
+              }
+            }}
           />
           <View style={styles.row}>
             <FormTextField
@@ -192,6 +203,11 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
               formatter={expirationDateFormatter}
               onFocus={() => setFocusedField(CardFields.Expiration)}
               onValid={goNext}
+              onChange={(value) => {
+                if (props.onChange) {
+                  props.onChange('expiration', value, formContext)
+                }
+              }}
             />
             <FormTextField
               style={textFieldStyle}
@@ -215,6 +231,11 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
               }}
               onFocus={() => setFocusedField(CardFields.CVV)}
               onValid={goNext}
+              onChange={(value) => {
+                if (props.onChange) {
+                  props.onChange('cvv', value, formContext)
+                }
+              }}
             />
           </View>
         </ScrollView>

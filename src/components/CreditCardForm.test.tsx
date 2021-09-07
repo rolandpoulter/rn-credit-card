@@ -2,31 +2,23 @@ import React from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import { def, get } from 'bdd-lazy-var/getter'
 import CreditCardForm from './CreditCardForm'
-import { useForm, FormProvider } from 'react-hook-form'
 import { Button } from 'react-native'
 import { FormModel } from '../types'
+import CreditCardProvider from './CreditCardProvider';
 
 const Wrapper = () => {
-  const formMethods = useForm({
-    mode: 'onBlur',
-    defaultValues: {
-      holderName: '',
-      cardNumber: '',
-      expiration: '',
-      cvv: '',
-    },
-  })
-  const { handleSubmit } = formMethods
-
   const onSubmit = (model: FormModel) => {
     get.onSubmit(model)
   }
-
   return (
-    <FormProvider {...formMethods}>
-      <CreditCardForm />
-      <Button onPress={handleSubmit(onSubmit)} title={'Submit'} />
-    </FormProvider>
+    <CreditCardProvider>
+      {({ handleSubmit }) => (
+        <>
+          <CreditCardForm />
+          <Button onPress={handleSubmit(onSubmit)} title={'Submit'} />
+        </>
+      )}
+    </CreditCardProvider>
   )
 }
 

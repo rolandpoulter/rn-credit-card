@@ -53,6 +53,9 @@ const FormTextField = React.forwardRef<TextInput, Props>((props, ref) => {
           onChangeText={(text) => {
             const formatted = formatter ? formatter(field.value, text) : text
             field.onChange(formatted)
+            if (props.onChange) {
+              props.onChange(formatted, text)
+            }
           }}
           value={field.value}
         />
