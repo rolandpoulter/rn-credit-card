@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "card-validator": "^8.1.0",
-    "react-native-card-flip": "^1.0.7"
+    "react-native-card-flip": "git+https://github.com/rolandpoulter/react-native-card-flip.git"
   },
   "peerDependencies": {
     "lottie-react-native": ">3.0.0",
