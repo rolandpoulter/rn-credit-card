@@ -15,23 +15,25 @@ type Card = {
 
 const CARDS: Record<string, Card> = {
   visa: {
-    icon: require('./icons/visa.png'),
+    icon: require('./icons/visa.png.js'),
     animation: require('./lottie/visa.json'),
   },
   mastercard: {
-    icon: require('./icons/mastercard.png'),
+    icon: require('./icons/mastercard.png.js'),
     animation: require('./lottie/mastercard.json'),
   },
   'american-express': {
-    icon: require('./icons/amex.png'),
+    icon: require('./icons/amex.png.js'),
     animation: require('./lottie/amex.json'),
     alternativeAnimation: require('./lottie/amexBlue.json'),
   },
   discover: {
-    icon: require('./icons/discover.png'),
+    icon: require('./icons/discover.png.js'),
     animation: require('./lottie/discover.json'),
   },
 }
+
+debugger;
 
 const CardIcon: React.FC<Props> = (props) => {
   const { LottieView } = useContext(LibraryContext)
@@ -48,7 +50,7 @@ const CardIcon: React.FC<Props> = (props) => {
   if (!data) return null
 
   if (!LottieView) {
-    return <Image style={styles.icon} source={data.icon} />
+    return <Image style={styles.icon} source={{ uri: data.icon }} />
   }
 
   return (

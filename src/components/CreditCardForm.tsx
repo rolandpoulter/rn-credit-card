@@ -100,8 +100,8 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
         ...props,
         overrides: overrides || {},
         fonts: {
-          regular: props.fonts?.regular || 'RobotoMono_400Regular',
-          bold: props.fonts?.bold || 'RobotoMono_700Bold',
+          regular: props.fonts?.regular, // || 'RobotoMono_400Regular',
+          bold: props.fonts?.bold, // || 'RobotoMono_700Bold',
         },
         translations,
       }}

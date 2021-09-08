@@ -9,14 +9,14 @@ type Props = {
   cardType?: string
 }
 
-const tape = require('../../assets/tape.png')
+const tape = require('../../assets/tape.png.js')
 
 const BackSide: React.FC<Props> = ({ model, cardType }) => {
   return (
     <>
       <View style={styles.black} />
       <View style={styles.tapeContainer}>
-        <Image style={styles.tape} source={tape} />
+        <Image style={styles.tape} source={{ uri: tape }} />
         <View style={styles.cvvContainer}>
           <PlaceholderText
             style={styles.cvvText}
