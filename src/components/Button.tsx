@@ -14,7 +14,7 @@ const Button: React.FC<Props> = (props) => {
     <TouchableOpacity
       style={[
         styles.container,
-        { opacity: disabled ? 0.1 : 1 },
+        { opacity: disabled ? 0.5 : 1 },
         style
       ]}
       {...restOfProps}

@@ -44,7 +44,7 @@ const Card: React.FC<Props> = ({ model, cardType, focusedField, disabled }) => {
   return (
     <>
       {/* @ts-ignore */}
-      <FlipCard style={[styles.container, disabled ? { opacity: 0.1 } : {}]} ref={cardRef}>
+      <FlipCard style={[styles.container, disabled ? { opacity: 0.5 } : {}]} ref={cardRef}>
         <>
           {backgroundImage || (
             <Image style={styles.background} source={background} />

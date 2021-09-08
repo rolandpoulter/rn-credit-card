@@ -66,7 +66,7 @@ const TextField = React.forwardRef<TextInput, Props>((props, ref) => {
           styles.input,
           {
             fontFamily: fonts.regular,
-            opacity: disabled ? 0.1 : 1,
+            opacity: disabled ? 0.5 : 1,
           },
           overrides.input,
           {
