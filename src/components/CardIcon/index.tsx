@@ -5,6 +5,7 @@ import LibraryContext from '../../LibraryContext'
 
 type Props = {
   cardNumber: string
+  disabled: boolean | null
 }
 
 type Card = {

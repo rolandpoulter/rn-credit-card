@@ -9,6 +9,7 @@ declare type Props = React.ComponentProps<typeof TextField> & {
     formatter?: (oldValue: string, newValue: string) => string;
     onValid?: () => void;
     onChange?: (formatted: string, text: string) => void;
+    disabled: boolean | null;
 };
 declare const FormTextField: React.ForwardRefExoticComponent<Pick<Props, "label" | keyof import("react-native").TextInputProps | "name" | "errorText" | "endEnhancer" | "disabled" | "key" | "rules" | "validationLength" | "formatter" | "onValid"> & React.RefAttributes<TextInput>>;
 export default FormTextField;

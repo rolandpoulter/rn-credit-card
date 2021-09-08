@@ -3,7 +3,9 @@ import Card from './Card'
 import { useFormContext } from 'react-hook-form'
 
 type CardProps = React.ComponentProps<typeof Card>
-type Props = Omit<CardProps, 'model'>
+type Props = Omit<CardProps, 'model'> & {
+  disabled: boolean | null
+}
 
 const FormCard: React.FC<Props> = ({ cardType, focusedField, disabled }) => {
   const { watch } = useFormContext()

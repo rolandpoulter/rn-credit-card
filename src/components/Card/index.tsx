@@ -11,6 +11,7 @@ type Props = {
   focusedField: CardFields | null
   cardType?: string
   model: FormModel
+  disabled: boolean | null
 }
 
 function usePrevious(value: any) {
@@ -52,13 +53,14 @@ const Card: React.FC<Props> = ({ model, cardType, focusedField, disabled }) => {
             model={model}
             cardType={cardType}
             focusedField={focusedField}
+            disabled={disabled}
           />
         </>
         <>
           {backgroundImage || (
             <Image style={styles.background} source={background} />
           )}
-          <BackSide model={model} cardType={cardType} />
+          <BackSide model={model} cardType={cardType} disabled={disabled} />
         </>
       </FlipCard>
     </>

@@ -61,13 +61,14 @@ const TextField = React.forwardRef<TextInput, Props>((props, ref) => {
           styles.input,
           {
             fontFamily: fonts.regular,
+            opacity: disabled ? 0.1 : 1,
           },
           overrides.input,
           {
             borderColor: color,
           },
         ]}
-        disabled={disabled}
+        // disabled={disabled}
         ref={ref}
         {...restOfProps}
         value={value}

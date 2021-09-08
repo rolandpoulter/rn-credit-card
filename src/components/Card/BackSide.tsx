@@ -7,11 +7,12 @@ import PlaceholderText from './PlaceholderText'
 type Props = {
   model: FormModel
   cardType?: string
+  disabled: boolean | null
 }
 
 const tape = require('../../assets/tape.png.js')
 
-const BackSide: React.FC<Props> = ({ model, cardType }) => {
+const BackSide: React.FC<Props> = ({ model, cardType, disabled }) => {
   return (
     <>
       <View style={styles.black} />
@@ -26,7 +27,7 @@ const BackSide: React.FC<Props> = ({ model, cardType }) => {
         </View>
       </View>
       <View style={styles.footer}>
-        <CardIcon cardNumber={model.cardNumber} />
+        <CardIcon cardNumber={model.cardNumber} disabled={disabled} />
       </View>
     </>
   )

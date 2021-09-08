@@ -4,6 +4,7 @@ import Text from './Text'
 
 type Props = React.ComponentProps<typeof TouchableOpacity> & {
   title: string
+  disabled: boolean | null
 }
 
 const Button: React.FC<Props> = (props) => {

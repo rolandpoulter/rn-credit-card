@@ -72,4 +72,5 @@ export type LibraryProps = {
   fonts?: Fonts
   overrides?: Overrides
   onChange?: Function
+  disabled?: boolean | null
 }
