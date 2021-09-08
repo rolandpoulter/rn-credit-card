@@ -26,9 +26,14 @@ const TextField = React.forwardRef<TextInput, Props>((props, ref) => {
     style,
     onBlur,
     onFocus,
-    disabled,
+    // disabled,
     ...restOfProps
   } = props
+
+  const {
+    disabled
+  } = restOfProps;
+
   const { inputColors = {}, fonts, overrides } = useContext(LibraryContext)
   const {
     errored: errorColor = '#B00020',

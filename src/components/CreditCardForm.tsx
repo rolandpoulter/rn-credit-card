@@ -205,7 +205,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
                 },
               }}
               formatter={expirationDateFormatter}
-              onFocus={() => setFocusedField(CardFields.Expiration)}
+              onFocus={() => !disabled && setFocusedField(CardFields.Expiration)}
               onValid={goNext}
               onChange={(value) => {
                 if (props.onChange) {
