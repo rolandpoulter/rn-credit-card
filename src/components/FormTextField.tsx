@@ -38,6 +38,10 @@ const FormTextField = React.forwardRef<TextInput, Props>((props, ref) => {
     }
   }, [value, name, validationLength, trigger]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  if (disabled) {
+    return null;
+  }
+
   return (
     <Controller
       control={control}
