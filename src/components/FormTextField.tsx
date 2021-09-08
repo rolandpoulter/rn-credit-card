@@ -20,6 +20,7 @@ const FormTextField = React.forwardRef<TextInput, Props>((props, ref) => {
     formatter,
     onBlur,
     onValid,
+    disabled,
     ...restOfProps
   } = props
   const { control, formState, trigger, watch } = useFormContext()
@@ -44,14 +45,21 @@ const FormTextField = React.forwardRef<TextInput, Props>((props, ref) => {
           // passing everything down to TextField
           // to be able to support all TextInput props
           {...restOfProps}
+          disabled={disabled}
           ref={ref}
           testID={`TextField.${name}`}
           errorText={formState.errors[name]?.message}
           onBlur={(event) => {
+            if (disabled) {
+              return;
+            }
             field.onBlur()
             onBlur?.(event)
           }}
           onChangeText={(text) => {
+            if (disabled) {
+              return;
+            }
             const formatted = formatter ? formatter(field.value, text) : text
             field.onChange(formatted)
             if (props.onChange) {

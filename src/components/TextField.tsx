@@ -14,6 +14,7 @@ type Props = React.ComponentProps<typeof TextInput> & {
   label: string
   errorText?: string | null
   endEnhancer?: React.ReactNode
+  disabled: boolean | null
 }
 
 const TextField = React.forwardRef<TextInput, Props>((props, ref) => {
@@ -25,6 +26,7 @@ const TextField = React.forwardRef<TextInput, Props>((props, ref) => {
     style,
     onBlur,
     onFocus,
+    disabled,
     ...restOfProps
   } = props
   const { inputColors = {}, fonts, overrides } = useContext(LibraryContext)
@@ -65,20 +67,30 @@ const TextField = React.forwardRef<TextInput, Props>((props, ref) => {
             borderColor: color,
           },
         ]}
+        disabled={disabled}
         ref={ref}
         {...restOfProps}
         value={value}
         onBlur={(event) => {
+          if (disabled) {
+            return;
+          }
           setIsFocused(false)
           onBlur?.(event)
         }}
         onFocus={(event) => {
+          if (disabled) {
+            return;
+          }
           setIsFocused(true)
           onFocus?.(event)
         }}
       />
       <TouchableWithoutFeedback
         onPress={() => {
+          if (disabled) {
+            return;
+          }
           // @ts-ignore
           ref?.current?.focus()
         }}

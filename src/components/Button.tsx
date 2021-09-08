@@ -7,10 +7,17 @@ type Props = React.ComponentProps<typeof TouchableOpacity> & {
 }
 
 const Button: React.FC<Props> = (props) => {
-  const { title, style, ...restOfProps } = props
+  const { title, style, disabled, ...restOfProps } = props
 
   return (
-    <TouchableOpacity style={[styles.container, style]} {...restOfProps}>
+    <TouchableOpacity
+      style={[
+        styles.container,
+        { opacity: disabled ? 0.1 : 1 },
+        style
+      ]}
+      {...restOfProps}
+    >
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   )

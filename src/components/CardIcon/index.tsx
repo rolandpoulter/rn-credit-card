@@ -37,7 +37,7 @@ const CARDS: Record<string, Card> = {
 
 const CardIcon: React.FC<Props> = (props) => {
   const { LottieView } = useContext(LibraryContext)
-  const { cardNumber } = props
+  const { cardNumber, disabled } = props
   const { card } = cardValidator.number(cardNumber)
 
   const animRef = useCallback((node) => {
@@ -47,10 +47,10 @@ const CardIcon: React.FC<Props> = (props) => {
   }, [])
   const data: Card = CARDS[card?.type || -1]
 
-  if (!data) return null
+  if (!data || disabled) return null
 
   if (!LottieView) {
-    
+
     return <Image style={styles.icon} source={data.icon} />
   }
 

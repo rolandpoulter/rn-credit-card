@@ -28,6 +28,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
     horizontalStart = true,
     translations: parentTranslations,
     overrides,
+    disabled,
   } = props
   const translations = getTranslations(parentTranslations)
   const formContext = useFormContext()
@@ -69,7 +70,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
     : styles.regularField
 
   async function goNext() {
-    if (focusedField === null) return
+    if (focusedField === null || disabled) return
 
     const field = ['cardNumber', 'holderName', 'expiration', 'cvv'][
       focusedField
@@ -108,7 +109,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
     >
       <View style={styles.container}>
         <Conditional condition={!props.formOnly}>
-          <FormCard cardType={card?.type} focusedField={focusedField} />
+          <FormCard cardType={card?.type} focusedField={focusedField} disabled={disabled} />
         </Conditional>
         <ScrollView
           ref={scrollRef}
@@ -127,6 +128,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
             autoCompleteType="cc-number"
             maxLength={19}
             validationLength={isAmex ? 18 : 19}
+            disabled={disabled}
             rules={{
               required: translations.cardNumberRequired,
               validate: {
@@ -139,7 +141,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
               },
             }}
             formatter={cardNumberFormatter}
-            endEnhancer={<CardIcon cardNumber={cardNumber} />}
+            endEnhancer={<CardIcon cardNumber={cardNumber} disabled={disabled} />}
             onFocus={() => setFocusedField(CardFields.CardNumber)}
             onValid={goNext}
             onChange={(value) => {
@@ -154,6 +156,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
             name="holderName"
             autoCompleteType="name"
             label={translations.cardHolderName}
+            disabled={disabled}
             rules={{
               required: translations.cardHolderNameRequired,
               validate: {
@@ -189,6 +192,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
               autoCompleteType="cc-exp"
               maxLength={5}
               validationLength={5}
+              disabled={disabled}
               rules={{
                 required: translations.expirationRequired,
                 validate: {
@@ -218,6 +222,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
               autoCompleteType="cc-csc"
               maxLength={cvvLength}
               validationLength={cvvLength}
+              disabled={disabled}
               rules={{
                 required: translations.securityCodeRequired,
                 validate: {
@@ -248,6 +253,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
                 : translations.next
             }
             onPress={goNext}
+            disabled={disabled}
           />
         </Conditional>
       </View>

@@ -23,7 +23,7 @@ function usePrevious(value: any) {
 
 const background = require('../../assets/background.png.js')
 
-const Card: React.FC<Props> = ({ model, cardType, focusedField }) => {
+const Card: React.FC<Props> = ({ model, cardType, focusedField, disabled }) => {
   const { backgroundImage } = useContext(LibraryContext)
   const previousFocused = usePrevious(focusedField)
   const cardRef = useRef<FlipCard>()
@@ -39,11 +39,11 @@ const Card: React.FC<Props> = ({ model, cardType, focusedField }) => {
     }
   }, [focusedField, previousFocused])
 
-  
+
   return (
     <>
       {/* @ts-ignore */}
-      <FlipCard style={styles.container} ref={cardRef}>
+      <FlipCard style={[styles.container, disabled ? { opacity: 0.1 } : {}]} ref={cardRef}>
         <>
           {backgroundImage || (
             <Image style={styles.background} source={background} />
