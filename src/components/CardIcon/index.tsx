@@ -8,7 +8,7 @@ type Props = {
 }
 
 type Card = {
-  icon: number
+  icon: any
   animation: any
   alternativeAnimation?: any
 }
@@ -50,7 +50,7 @@ const CardIcon: React.FC<Props> = (props) => {
   if (!data) return null
 
   if (!LottieView) {
-    return <Image style={styles.icon} source={{ uri: data.icon }} />
+    return <Image style={styles.icon} source={{ uri: data.icon.data }} />
   }
 
   return (

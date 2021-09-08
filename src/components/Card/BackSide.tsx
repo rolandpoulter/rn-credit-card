@@ -16,7 +16,7 @@ const BackSide: React.FC<Props> = ({ model, cardType }) => {
     <>
       <View style={styles.black} />
       <View style={styles.tapeContainer}>
-        <Image style={styles.tape} source={{ uri: tape }} />
+        <Image style={styles.tape} source={{ uri: tape.data }} />
         <View style={styles.cvvContainer}>
           <PlaceholderText
             style={styles.cvvText}
