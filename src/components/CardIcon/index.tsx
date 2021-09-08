@@ -33,7 +33,7 @@ const CARDS: Record<string, Card> = {
   },
 }
 
-debugger;
+
 
 const CardIcon: React.FC<Props> = (props) => {
   const { LottieView } = useContext(LibraryContext)
@@ -50,7 +50,7 @@ const CardIcon: React.FC<Props> = (props) => {
   if (!data) return null
 
   if (!LottieView) {
-    debugger;
+    
     return <Image style={styles.icon} source={data.icon} />
   }
 

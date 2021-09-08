@@ -39,7 +39,7 @@ const Card: React.FC<Props> = ({ model, cardType, focusedField }) => {
     }
   }, [focusedField, previousFocused])
 
-  debugger;
+  
   return (
     <>
       {/* @ts-ignore */}
