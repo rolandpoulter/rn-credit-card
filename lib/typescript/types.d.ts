@@ -65,5 +65,6 @@ export declare type LibraryProps = {
     inputColors?: InputColors;
     fonts?: Fonts;
     overrides?: Overrides;
+    onChange?: Function;
 };
 export {};

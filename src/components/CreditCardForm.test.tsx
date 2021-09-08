@@ -6,16 +6,25 @@ import { Button } from 'react-native'
 import { FormModel } from '../types'
 import CreditCardProvider from './CreditCardProvider';
 
+// I dont know why people think typed javascript saves any time at all
+type DUMB = (e: any) => void
+
+type DUMBDUMB = (fn: DUMB) => DUMB
+
+type DUMBDUMBDUMB = {
+  handleSubmit: DUMBDUMB,
+}
+
 const Wrapper = () => {
   const onSubmit = (model: FormModel) => {
     get.onSubmit(model)
   }
   return (
     <CreditCardProvider>
-      {({ handleSubmit }) => (
+      {(provider: DUMBDUMBDUMB) => (
         <>
           <CreditCardForm />
-          <Button onPress={handleSubmit(onSubmit)} title={'Submit'} />
+          <Button onPress={provider.handleSubmit(onSubmit)} title={'Submit'} />
         </>
       )}
     </CreditCardProvider>

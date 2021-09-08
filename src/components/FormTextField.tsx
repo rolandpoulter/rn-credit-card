@@ -9,6 +9,7 @@ type Props = React.ComponentProps<typeof TextField> & {
   validationLength?: number
   formatter?: (oldValue: string, newValue: string) => string
   onValid?: () => void
+  onChange?: (formatted: string, text: string) => void
 }
 
 const FormTextField = React.forwardRef<TextInput, Props>((props, ref) => {

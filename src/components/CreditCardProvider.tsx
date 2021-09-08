@@ -6,10 +6,13 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { Button } from 'react-native'
 import { FormModel } from '../types'
 
+type Props = {
+}
+
 const CreditCardProvider: React.FC<Props> = (props) => {
   const formMethods = useForm({
     mode: 'onBlur',
-    defaultValues: props.defaultValues || {
+    defaultValues: {
       holderName: '',
       cardNumber: '',
       expiration: '',
@@ -27,8 +30,5 @@ const CreditCardProvider: React.FC<Props> = (props) => {
     </FormProvider>
   )
 }
-
-const styles = StyleSheet.create({
-})
 
 export default CreditCardProvider

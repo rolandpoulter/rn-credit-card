@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": true
+    "strict": false
   },
   "exclude": ["example"],
   "include": ["src"]
