@@ -142,7 +142,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
             }}
             formatter={cardNumberFormatter}
             endEnhancer={<CardIcon cardNumber={cardNumber} disabled={disabled} />}
-            onFocus={() => setFocusedField(CardFields.CardNumber)}
+            onFocus={() => !disabled && setFocusedField(CardFields.CardNumber)}
             onValid={goNext}
             onChange={(value) => {
               if (props.onChange) {
@@ -170,7 +170,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
             }}
             autoCorrect={false}
             onSubmitEditing={goNext}
-            onFocus={() => setFocusedField(CardFields.CardHolderName)}
+            onFocus={() => !disabled && setFocusedField(CardFields.CardHolderName)}
             onChange={(value) => {
               if (props.onChange) {
                 props.onChange('holderName', value, formContext)
@@ -234,7 +234,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
                   },
                 },
               }}
-              onFocus={() => setFocusedField(CardFields.CVV)}
+              onFocus={() => !disabled && setFocusedField(CardFields.CVV)}
               onValid={goNext}
               onChange={(value) => {
                 if (props.onChange) {
