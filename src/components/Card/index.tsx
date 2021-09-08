@@ -11,7 +11,7 @@ type Props = {
   focusedField: CardFields | null
   cardType?: string
   model: FormModel
-  disabled: boolean | null
+  disabled?: boolean | null
 }
 
 function usePrevious(value: any) {

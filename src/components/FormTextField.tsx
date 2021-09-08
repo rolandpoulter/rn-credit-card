@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useFormContext, Controller, RegisterOptions } from 'react-hook-form'
-import { TextInput } from 'react-native'
+import { View, TextInput } from 'react-native'
 import TextField from './TextField'
 
 type Props = React.ComponentProps<typeof TextField> & {
@@ -10,7 +10,7 @@ type Props = React.ComponentProps<typeof TextField> & {
   formatter?: (oldValue: string, newValue: string) => string
   onValid?: () => void
   onChange?: (formatted: string, text: string) => void
-  disabled: boolean | null
+  disabled?: boolean | null
 }
 
 const FormTextField = React.forwardRef<TextInput, Props>((props, ref) => {
@@ -38,45 +38,48 @@ const FormTextField = React.forwardRef<TextInput, Props>((props, ref) => {
     }
   }, [value, name, validationLength, trigger]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (disabled) {
-    return null;
-  }
 
   return (
-    <Controller
-      control={control}
-      render={({ field }) => (
-        <TextField
-          // passing everything down to TextField
-          // to be able to support all TextInput props
-          {...restOfProps}
-          disabled={disabled}
-          ref={ref}
-          testID={`TextField.${name}`}
-          errorText={formState.errors[name]?.message}
-          onBlur={(event) => {
-            if (disabled) {
-              return;
-            }
-            field.onBlur()
-            onBlur?.(event)
-          }}
-          onChangeText={(text) => {
-            if (disabled) {
-              return;
-            }
-            const formatted = formatter ? formatter(field.value, text) : text
-            field.onChange(formatted)
-            if (props.onChange) {
-              props.onChange(formatted, text)
-            }
-          }}
-          value={field.value}
-        />
-      )}
-      name={name}
-      rules={rules}
-    />
+    <View
+      style={{
+        display: disabled ? 'none' : 'flex'
+      }}
+    >
+      <Controller
+        control={control}
+        render={({ field }) => (
+          <TextField
+            // passing everything down to TextField
+            // to be able to support all TextInput props
+            {...restOfProps}
+            disabled={disabled}
+            ref={ref}
+            testID={`TextField.${name}`}
+            errorText={formState.errors[name]?.message}
+            onBlur={(event) => {
+              if (disabled) {
+                return;
+              }
+              field.onBlur()
+              onBlur?.(event)
+            }}
+            onChangeText={(text) => {
+              if (disabled) {
+                return;
+              }
+              const formatted = formatter ? formatter(field.value, text) : text
+              field.onChange(formatted)
+              if (props.onChange) {
+                props.onChange(formatted, text)
+              }
+            }}
+            value={field.value}
+          />
+        )}
+        name={name}
+        rules={rules}
+      />
+    </View>
   )
 })
 

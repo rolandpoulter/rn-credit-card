@@ -14,7 +14,7 @@ type Props = React.ComponentProps<typeof TextInput> & {
   label: string
   errorText?: string | null
   endEnhancer?: React.ReactNode
-  disabled: boolean | null
+  disabled?: boolean | null
 }
 
 const TextField = React.forwardRef<TextInput, Props>((props, ref) => {

@@ -16,7 +16,7 @@ type Props = {
   model: FormModel
   cardType?: string
   focusedField: CardFields | null
-  disabled: boolean | null
+  disabled?: boolean | null
 }
 
 const FrontSide: React.FC<Props> = ({ model, cardType, focusedField, disabled }) => {

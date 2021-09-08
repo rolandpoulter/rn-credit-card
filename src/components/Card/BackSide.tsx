@@ -7,7 +7,7 @@ import PlaceholderText from './PlaceholderText'
 type Props = {
   model: FormModel
   cardType?: string
-  disabled: boolean | null
+  disabled?: boolean | null
 }
 
 const tape = require('../../assets/tape.png.js')

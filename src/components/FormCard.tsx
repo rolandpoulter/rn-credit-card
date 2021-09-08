@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form'
 
 type CardProps = React.ComponentProps<typeof Card>
 type Props = Omit<CardProps, 'model'> & {
-  disabled: boolean | null
+  disabled?: boolean | null
 }
 
 const FormCard: React.FC<Props> = ({ cardType, focusedField, disabled }) => {

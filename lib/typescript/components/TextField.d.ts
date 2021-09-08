@@ -4,6 +4,6 @@ declare const TextField: React.ForwardRefExoticComponent<import("react-native").
     label: string;
     errorText?: string | null;
     endEnhancer?: React.ReactNode;
-    disabled: boolean | null;
+    disabled?: boolean | null;
 } & React.RefAttributes<TextInput>>;
 export default TextField;
