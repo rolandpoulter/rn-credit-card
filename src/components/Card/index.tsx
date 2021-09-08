@@ -46,7 +46,7 @@ const Card: React.FC<Props> = ({ model, cardType, focusedField }) => {
       <FlipCard style={styles.container} ref={cardRef}>
         <>
           {backgroundImage || (
-            <Image style={styles.background} source={{ uri: background.data }} />
+            <Image style={styles.background} source={background} />
           )}
           <FrontSide
             model={model}
@@ -56,7 +56,7 @@ const Card: React.FC<Props> = ({ model, cardType, focusedField }) => {
         </>
         <>
           {backgroundImage || (
-            <Image style={styles.background} source={{ uri: background.data }} />
+            <Image style={styles.background} source={background} />
           )}
           <BackSide model={model} cardType={cardType} />
         </>

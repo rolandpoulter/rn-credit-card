@@ -50,7 +50,8 @@ const CardIcon: React.FC<Props> = (props) => {
   if (!data) return null
 
   if (!LottieView) {
-    return <Image style={styles.icon} source={{ uri: data.icon.data }} />
+    debugger;
+    return <Image style={styles.icon} source={data.icon} />
   }
 
   return (
