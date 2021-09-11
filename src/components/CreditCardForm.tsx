@@ -182,7 +182,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
               style={[
                 textFieldStyle,
                 {
-                  marginRight: isHorizontal ? 0 : 24,
+                  marginRight: isHorizontal ? 0 : 12, // 24,
                 },
               ]}
               ref={expirationRef}
